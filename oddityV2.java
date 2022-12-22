@@ -8,8 +8,11 @@ public class oddityV2 {
 
     //this bool allows for the while loop to keep going until it's reasigned
     boolean running = true;
-
+    //What needs to be entered to end the program
+    String exit = "exit";
+    
     System.out.println(" - Welcome to keeper's first java program - ");
+    System.out.println(" - To exit the program, enter 'exit' - ");
 
     //I guess I gotta deal with this recursion bullshit so here I goes I guess
     while (running == true) {
@@ -18,6 +21,7 @@ public class oddityV2 {
       Scanner input = new Scanner(System.in);
       System.out.println("**Enter your number**");
 
+      //the try function attempts to run the program, but if it fails will send it to the catch
       try {
 
         //makes value the user input, nextDouble ensures it's a double
@@ -44,12 +48,27 @@ public class oddityV2 {
 
       }
 
+      //will run if the initial program fails (if they dont enter an integer)
       catch (Exception e) {
 
-        System.out.println("Please enter a valid integer");
+        String value = input.next();
+        boolean exitTrue = (value.equals(exit));
+
+        //ends the program if it sees that "exit" is entered
+        if (exitTrue == true) {
+
+          break;
+
+        }
+
+        //Continues the program if any other random crap is entered
+        else {
+
+          System.out.println("Please enter a valid integer");  
+
+        }
 
       }
-
     }
   }
 }
